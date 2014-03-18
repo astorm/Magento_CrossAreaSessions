@@ -3,9 +3,9 @@ class Pulsestorm_Crossareasession_IndexController extends Mage_Core_Controller_F
 {
     public function indexAction()
     {        
-        //$this->_exampleCheckAcl();
-        //$this->_exampleGetData();        
-        $this->_cheapTest();
+        // $this->_exampleCheckAcl();
+        // $this->_exampleGetData();        
+        // $this->_cheapTest();
     }
     
     protected function _exampleGetData()

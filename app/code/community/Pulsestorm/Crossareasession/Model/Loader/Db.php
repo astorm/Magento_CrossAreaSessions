@@ -7,11 +7,8 @@ class Pulsestorm_Crossareasession_Model_Loader_Db extends Pulsestorm_Crossarease
         $data = $reader->read($session_id);
         if($data)
         {
-            session_decode($data);
+            return $data;
         }
-        else
-        {
-            $_SESSION = array();
-        }
+        return false;
     }
 }

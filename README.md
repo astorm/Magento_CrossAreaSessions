@@ -31,3 +31,15 @@ Checking an admin ACL rule from the frontend.
     {
         var_dump("Logged in Admin user can NOT access $acl");
     }
+
+Additional Storage Engine Support
+--------------------------------------------------
+Right now only the `files` and `db` storage types are supported.  If you want to use this with Memcache, reddis, etc. you'll to implement your own loader model. 
+
+Implementing a loader model is as easy as dropping a new class in the 
+
+    app/code/community/Pulsestorm/Crossareasession/Model/
+
+folder, named such that is matches the value in the `<session_save/>` node.  For example, `<session_save>files</session_save>` is `Files.php`, `<session_save>db</session_save>` is `Db.php`, etc. 
+
+A loader object should extend the `Pulsestorm_Crossareasession_Model_Loader_Abstract` class, and implement the single abstract `_load` method.  The `_load` method should load the raw, serialized session data and return it as a string.  
