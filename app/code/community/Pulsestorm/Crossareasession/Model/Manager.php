@@ -30,10 +30,17 @@ class Pulsestorm_Crossareasession_Model_Manager
         }
         
         $session_save_type = (string)Mage::getConfig()->getNode('global/session_save');        
+        if( (string) Mage::getConfig()->getModuleConfig('Cm_RedisSession')->active == 'true' && 
+            $session_save_type == 'db')
+        {
+            $session_save_type = 'redis';
+        }
+    
         $decoded_data = false;    
         
         //load 'er up
         $loader = Mage::getModel('pulsestorm_crossareasession/loader_' . $session_save_type);
+        
         $loader->load($session_id);        
     }
     

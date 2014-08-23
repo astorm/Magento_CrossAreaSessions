@@ -20,6 +20,7 @@ abstract class Pulsestorm_Crossareasession_Model_Loader_Abstract
     */
     abstract function _load($session_id);    
     
+    protected $_decodeData=true;
     
     final public function load($session_id)
     {
@@ -27,6 +28,11 @@ abstract class Pulsestorm_Crossareasession_Model_Loader_Abstract
         if (!is_string($string) && $string !== false)
         {
             Mage::throwException('_load should return a string or false');
+        }
+        
+        if(!$this->_decodeData)
+        {
+            return;
         }
         
         if($string)

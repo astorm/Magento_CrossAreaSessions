@@ -2,8 +2,8 @@
 class Pulsestorm_Crossareasession_IndexController extends Mage_Core_Controller_Front_Action
 {
     public function indexAction()
-    {        
-        // $this->_exampleCheckAcl();
+    {                       
+        $this->_exampleCheckAcl();
         // $this->_exampleGetData();        
         // $this->_cheapTest();
     }
@@ -20,6 +20,7 @@ class Pulsestorm_Crossareasession_IndexController extends Mage_Core_Controller_F
     protected function _exampleCheckAcl()
     {
         $manager = Mage::getModel('pulsestorm_crossareasession/manager');
+        
         $acl = 'system/cache';
         if($manager->checkAdminAclRule($acl))
         {
